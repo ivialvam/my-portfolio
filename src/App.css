@@ -616,3 +616,38 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   letter-spacing: 0.5px;
   margin-top: 20px;
 }
+
+.blog-post {
+  background: #fff;
+  transition: all 0.3s ease-in-out;
+  text-align: left;
+}
+.blog-post:hover {
+  background: #f8f9fa;
+  transform: translateY(-2px);
+}
+.blog-image {
+  width: 100%;  /* Menyesuaikan lebar container */
+  height: auto; /* Biar tetap proporsional */
+  max-height: 580px; /* Sesuai dengan tinggi gambar */
+  object-fit: cover;
+  border-radius: 8px;
+}
+.blog-post-content {
+  padding: 20px;
+}
+
+.tools-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+.tool-img {
+  width: 50px;  /* Sesuaikan ukuran ikon */
+  height: auto;
+  transition: transform 0.3s ease-in-out;
+}
+.tool-img:hover {
+  transform: scale(1.1);
+}
