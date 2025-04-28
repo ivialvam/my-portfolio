@@ -37,7 +37,7 @@ export const Projects = () => {
   const programmerProjects = [
     {
       imgUrl: programmerproject1,
-      title: "CBR Extractor",
+      title: "XBR - Extractor Banking Reporting",
       date: "2024",
       company: "PT Asta Protek Jiarsi",
       content: `
@@ -58,7 +58,7 @@ export const Projects = () => {
   const qualityassuranceProjects = [
     {
       imgUrl: qualityassuranceproject1,
-      title: "CBR Automation",
+      title: "CBR Automation - Aplikasi Central Bank Repoting",
       date: "31 Januari 2025",
       company: "PT Asta Protek Jiarsi",
       content:`
