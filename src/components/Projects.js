@@ -131,7 +131,7 @@ export const Projects = () => {
                             <div key={index} className="blog-post mb-4 p-3 border rounded shadow-sm">
                               <img src={project.imgUrl} alt={project.title} className="blog-image" />
                               <h5 className="mt-3 mb-1" style={{ color: "black" }}>{project.title}</h5>
-                              <h3 className="mt-3 mb-1" style={{ color: "black" }}>{project.company}</h3>
+                              <h8 className="mt-3 mb-1" style={{ color: "black" }}>{project.company}</h8>
                               <br></br>
                               <small className="text-muted">{project.date}</small>
                               <div style={{ color: "black", textAlign: "justify", width: "100%", margin: "auto", padding: "0 50px" }} dangerouslySetInnerHTML={{ __html: project.content }} ></div>
