@@ -4,55 +4,87 @@ import colorSharp2 from "../assets/img/color-sharp2.png";
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 
-import projImg1 from "../assets/img/project-img1.png";
-import projImg2 from "../assets/img/project-img2.png";
-import projImg3 from "../assets/img/project-img3.png";
-import projImg4 from "../assets/img/project-img4.png";
-// import projImg5 from "../assets/img/project-img5.png";
-// import projImg6 from "../assets/img/project-img6.png";
+import graphicsdesignerproject1 from "../assets/img/project-img1.png";
+import graphicsdesignerproject2 from "../assets/img/project-img2.png";
+import graphicsdesignerproject3 from "../assets/img/project-img3.png";
+import qualityassuranceproject1 from "../assets/img/project-img4.png";
+import qualityassuranceproject2 from "../assets/img/project-img6.png";
+import programmerproject1 from "../assets/img/project-img5.png";
+
 import canvaImg from "../assets/img/canva.png";
 import photoshopImg from "../assets/img/adobe-photoshop.png";
 
 
 export const Projects = () => {
-  const graphicProjects = [
+  const graphicdesignerProjects = [
     {
       title: "Healthy Food Business",
       description: "Branding & Marketing Design",
-      imgUrl: projImg1,
+      imgUrl: graphicsdesignerproject1,
     },
     {
       title: "Robotics Event",
       description: "Branding & Promotional Design",
-      imgUrl: projImg2,
+      imgUrl: graphicsdesignerproject2,
     },
     {
       title: "Volunteer Gathering",
       description: "Visual Design",
-      imgUrl: projImg3,
+      imgUrl: graphicsdesignerproject3,
     },
   ]
 
-  const programmingArticles = [
+  const programmerProjects = [
     {
-      title: "Membangun REST API dengan Node.js dan Express",
-      content: "Dalam artikel ini, kita akan membahas cara membuat REST API menggunakan Node.js dan Express dengan database MongoDB...",
-      date: "31 Januari 2025",
-      imgUrl: projImg4,
+      imgUrl: programmerproject1,
+      title: "CBR Extractor",
+      date: "2024",
+      company: "PT Asta Protek Jiarsi",
+      content: `
+      Saya membantu mengembangkan aplikasi CBR Extractor yang berfungsi untuk mengkonversi data dari Data Warehouse (DWH) ke dalam format 
+      yang siap diproses dan digunakan oleh aplikasi internal kami. Aplikasi ini mengadopsi sistem ELT (Extract, Load, Transform), 
+      memungkinkan proses pengambilan dan pemuatan data yang lebih efisien.
+      <ul>
+      <br> Jobdesk:
+      <li> Membuat CRUD operations untuk aplikasi Extractor. </li>
+      <li> Mengimplementasikan sistem ELT untuk memproses data dari DWH. </li>
+      <li> Mengoptimalkan alur kerja data. </li>
+      </ul>
+      `,
+      tools: "Laravel, PHP, PostgreSQL, JavaScript",
     },
-    // {
-    //   title: "Memahami State Management di React",
-    //   content: "State management sangat penting dalam pengembangan aplikasi React. Kita akan membahas Redux, Context API, dan solusi lainnya...",
-    //   date: "25 Januari 2025",
-    //   imgUrl: projImg1,
-    // },
-    // {
-    //   title: "Optimasi Kinerja Website dengan Lazy Loading",
-    //   content: "Lazy loading adalah teknik yang digunakan untuk meningkatkan performa website dengan cara menunda pemuatan gambar atau data...",
-    //   date: "20 Januari 2025",
-    //   imgUrl: projImg2,
-    // },
-  ]
+  ];
+
+  const qualityassuranceProjects = [
+    {
+      imgUrl: qualityassuranceproject1,
+      title: "CBR Automation",
+      date: "31 Januari 2025",
+      company: "PT Asta Protek Jiarsi",
+      content:`
+      Saya membuat dan mengimplementasikan project automation testing menggunakan Cypress dengan bahasa pemrograman JavaScript.
+      Project ini bertujuan untuk meningkatkan efisiensi pengujian dengan mengotomatiskan skenario pengujian utama, 
+      mengurangi kesalahan manual, serta efisiensi waktu pengujian.
+      `,
+      tools: "Cypress, JavaScript, Excel",
+    },
+    
+    {
+      imgUrl: qualityassuranceproject2,
+      title: "Regulatory Reporting",
+      date: "2025",
+      company: "PT Asta Protek Jiarsi",
+      content: `
+      Sebagai QA di tim CBR (Central Bank Reporting), saya terlibat dalam pengujian end-to-end terhadap sistem pelaporan ke 
+      regulator seperti Bank Indonesia dan OJK. Beberapa laporan yang saya uji mencakup:
+      <ul>
+      <br><li><b>Antasena</b> (metadata validation, format compliance)</li>
+          <li><b>Slik, Obox, Apolo, LPS, LLD</b> (validasi tampilan, backend data, dan log pelaporan)</li>
+          <li>Familiar dengan metadata structure pada pelaporan Antasena BI dan Slik OJK</li>
+      </ul>`,
+      tools: "Cypress, JavaScript, Excel, DatGrip",
+    },
+  ];
 
   return (
     <section className="project" id="projects">
@@ -63,7 +95,7 @@ export const Projects = () => {
               {({ isVisible }) =>
                 <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
                   <h2>Projects</h2>
-                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                  <p>My List Project</p>
                   <Tab.Container id="projects-tabs" defaultActiveKey="first">
                     <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
                       <Nav.Item>
@@ -73,7 +105,7 @@ export const Projects = () => {
                         <Nav.Link eventKey="second">Programmer</Nav.Link>
                       </Nav.Item>
                       <Nav.Item>
-                        <Nav.Link eventKey="third">Web Developer</Nav.Link>
+                        <Nav.Link eventKey="third">QA Engineer</Nav.Link>
                       </Nav.Item>
                     </Nav>
 
@@ -81,7 +113,7 @@ export const Projects = () => {
                       {/* Tab 1: Graphic Designer */}
                       <Tab.Pane eventKey="first">
                         <Row>
-                          {graphicProjects.map((project, index) => (
+                          {graphicdesignerProjects.map((project, index) => (
                             <ProjectCard key={index} {...project} />
                           ))}
                         </Row>
@@ -92,24 +124,40 @@ export const Projects = () => {
                         </div>
                       </Tab.Pane>
 
-                      {/* Tab 2: Programmer - Sekarang dengan gambar */}
+                      {/* Tab 2: Programmer */}
                       <Tab.Pane eventKey="second">
                         <div className="blog-section">
-                          {programmingArticles.map((article, index) => (
+                          {programmerProjects.map((project, index) => (
                             <div key={index} className="blog-post mb-4 p-3 border rounded shadow-sm">
-                              <img src={article.imgUrl} alt={article.title} className="blog-image" />
-                              <h4 className="mt-3 mb-1">{article.title}</h4>
-                              <small className="text-muted">{article.date}</small>
-                              <p className="mt-2">{article.content}</p>
+                              <img src={project.imgUrl} alt={project.title} className="blog-image" />
+                              <h5 className="mt-3 mb-1" style={{ color: "black" }}>{project.title}</h5>
+                              <h3 className="mt-3 mb-1" style={{ color: "black" }}>{project.company}</h3>
+                              <br></br>
+                              <small className="text-muted">{project.date}</small>
+                              <div style={{ color: "black", textAlign: "justify", width: "100%", margin: "auto", padding: "0 50px" }} dangerouslySetInnerHTML={{ __html: project.content }} ></div>
+                              <p style={{ fontWeight: "bold" }}>Tools: {project.tools}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </Tab.Pane>
+                          
+                      {/* Tab 3: Quality Assurance */}
+                      <Tab.Pane eventKey="third">
+                        <div className="blog-section">
+                          {qualityassuranceProjects.map((project, index) => (
+                            <div key={index} className="blog-post mb-4 p-3 border rounded shadow-sm">
+                              <img src={project.imgUrl} alt={project.title} className="blog-image" />
+                              <h5 className="mt-3 mb-1" style={{ color: "black" }}>{project.title}</h5>
+                              <h8 className="mt-3 mb-1" style={{ color: "black" }}>{project.company}</h8>
+                              <br></br>
+                              <small className="text-muted">{project.date}</small>
+                              <div style={{ color: "black", textAlign: "justify", width: "100%", margin: "auto", padding: "0 50px" }} dangerouslySetInnerHTML={{ __html: project.content }} ></div>
+                              <p style={{ fontWeight: "bold" }}>Tools: {project.tools}</p>
                             </div>
                           ))}
                         </div>
                       </Tab.Pane>
 
-                      {/* Tab 3: Web Developer */}
-                      <Tab.Pane eventKey="third">
-                        <p>Tambahkan daftar proyek Web Developer di sini.</p>
-                      </Tab.Pane>
                     </Tab.Content>
                   </Tab.Container>
                 </div>

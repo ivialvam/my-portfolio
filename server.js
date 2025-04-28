@@ -2,21 +2,35 @@ const express = require("express");
 const router = express.Router();
 const cors = require("cors");
 const nodemailer = require("nodemailer");
+const mysql = require("mysql2");
 
-// server used to send send emails
 const app = express();
 app.use(cors());
 app.use(express.json());
 app.use("/", router);
 app.listen(5000, () => console.log("Server Running"));
-console.log(process.env.EMAIL_USER);
-console.log(process.env.EMAIL_PASS);
+
+// Koneksi DB
+const db = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "",      // isi sesuai config localmu
+  database: "portfolio_db"
+});
+
+db.connect((err) => {
+  if (err) {
+    console.log("DB connection error:", err);
+  } else {
+    console.log("MySQL Connected!");
+  }
+});
 
 const contactEmail = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: "********@gmail.com",
-    pass: ""
+    pass: "********" // gunakan variabel env ya di real project
   },
 });
 
@@ -29,10 +43,10 @@ contactEmail.verify((error) => {
 });
 
 router.post("/contact", (req, res) => {
-  const name = req.body.firstName + req.body.lastName;
-  const email = req.body.email;
-  const message = req.body.message;
-  const phone = req.body.phone;
+  const { firstName, lastName, email, message, phone } = req.body;
+  const name = firstName + " " + lastName;
+
+  // Kirim email
   const mail = {
     from: name,
     to: "********@gmail.com",
@@ -42,11 +56,21 @@ router.post("/contact", (req, res) => {
            <p>Phone: ${phone}</p>
            <p>Message: ${message}</p>`,
   };
+
   contactEmail.sendMail(mail, (error) => {
     if (error) {
-      res.json(error);
+      res.json({ code: 500, status: "Email failed", error });
     } else {
-      res.json({ code: 200, status: "Message Sent" });
+      // Simpan ke database
+      const query = "INSERT INTO contact_messages (firstName, lastName, email, phone, message) VALUES (?, ?, ?, ?, ?)";
+      db.query(query, [firstName, lastName, email, phone, message], (err, result) => {
+        if (err) {
+          console.log("DB Insert Error:", err);
+          res.json({ code: 500, status: "DB Insert Failed", error: err });
+        } else {
+          res.json({ code: 200, status: "Message Sent and Saved" });
+        }
+      });
     }
   });
 });

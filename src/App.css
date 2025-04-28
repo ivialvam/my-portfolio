@@ -629,7 +629,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 .blog-image {
   width: 100%;  /* Menyesuaikan lebar container */
   height: auto; /* Biar tetap proporsional */
-  max-height: 580px; /* Sesuai dengan tinggi gambar */
+  max-height: 1080px; /* Sesuai dengan tinggi gambar */
   object-fit: cover;
   border-radius: 8px;
 }
